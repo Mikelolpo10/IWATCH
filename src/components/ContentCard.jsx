@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router'
 import './ContentCard.css'
 
-export default function ContentCard({ poster, title, rating }) {
+export default function ContentCard({ id, poster, title, rating, }) {
+  const navigate = useNavigate()
+
   return (
-    <div className="content-card">
+    <div
+      className="content-card"
+      onClick={() => navigate(`/movie/${id}`)}
+    >
       <div className="card-img">
         <img src={`https://image.tmdb.org/t/p/w500${poster}`} />
       </div>
@@ -10,7 +16,6 @@ export default function ContentCard({ poster, title, rating }) {
         <h3>{title}</h3>
         <div className="card-meta">
           <span className="card-rating">★ {rating}</span>
-          <span>Genre</span>
         </div>
       </div>
     </div>

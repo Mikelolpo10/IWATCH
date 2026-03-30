@@ -3,6 +3,16 @@ import axios from 'axios'
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 const BASE_URL = "https://api.themoviedb.org/3"
 
+export const getMovie = async (id) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+    console.log(res)
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const getPopularMovies = async () => {
   try {
     const res = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
@@ -20,3 +30,10 @@ export const searchMovies = async (query) => {
     console.log(err)
   }
 }
+
+
+
+
+
+
+

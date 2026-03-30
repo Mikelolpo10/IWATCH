@@ -4,6 +4,7 @@
   background: var(--dark-card);
   overflow: hidden;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .content-card:hover {
@@ -28,6 +29,7 @@
 
 .card-info {
   padding: 1rem;
+  color: white;
   font-size: 0.8rem;
 }
 

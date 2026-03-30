@@ -1,0 +1,42 @@
+.content-card {
+  width: 150px;
+  border-radius: 10px;
+  background: var(--dark-card);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.content-card:hover {
+  transform: scale(1.05);
+}
+
+.card-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 225px;
+  background: var(--dark-lighter);
+  font-size: 2rem;
+}
+
+.card-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.card-info {
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+
+.card-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+
+.card-rating {
+  color: var(--secondary);
+}

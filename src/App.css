@@ -1,0 +1,9 @@
+:root {
+  --primary: rgb(82, 134, 255);
+  --secondary: #14B8A6;
+  --dark: #0F0F23;
+  --dark-card: #1A1A35;
+  --dark-lighter: #252547;
+  --text: #FFFFFF;
+  --text-dim: #A1A1B5;
+}

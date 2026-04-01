@@ -12,32 +12,23 @@ export default function ContentPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        const data = await getMovie(id)
-        setMovie(data)
+    const fetchData = async () => {
+      try {  
+        const [movieData, similarData] = await Promise.all([
+          getMovie(id),
+          getSimilarMovies(id)
+        ])
+  
+        setMovie(movieData)
+        setSimilarMovies(similarData.results.slice(0, 7))
       } catch (err) {
         console.log(err)
+      } finally {
+        setLoading(false)
       }
     }
   
-    const fetchSimilar = async () => {
-      try {
-        const data = await getSimilarMovies(id)
-        setSimilarMovies(data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-  
-    const fetchAll = async () => {
-      setLoading(true)
-      await fetchMovie()
-      await fetchSimilar()
-      setLoading(false)
-    }
-  
-    fetchAll()
+    fetchData()
   }, [id])
 
   if (loading) {
@@ -178,18 +169,12 @@ export default function ContentPage() {
           <h2 className="section-title">MORE LIKE THIS</h2>
 
           <div className="similar-grid">
-            {[
-              ["🤖", "Neural Network", "8.7"],
-              ["🌐", "Digital Frontier", "8.9"],
-              ["⚡", "Code Breach", "9.1"],
-              ["🔮", "Quantum Shift", "8.5"],
-              ["💾", "Data Storm", "8.8"]
-            ].map(([icon, title, rating], i) => (
-              <div className="similar-card" key={i}>
-                <div className="similar-img">{icon}</div>
+            {similarMovie.map(({ id, poster_path, title, vote_average }) => (
+              <div className="similar-card" key={id}>
+                <img className="similar-img" src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="" />
                 <div className="similar-info">
                   <h3>{title}</h3>
-                  <span>★ {rating}</span>
+                  <span>★ {vote_average.toFixed(1)}</span>
                 </div>
               </div>
             ))}

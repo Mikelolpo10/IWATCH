@@ -6,7 +6,6 @@ const BASE_URL = "https://api.themoviedb.org/3"
 export const getMovie = async (id) => {
   try {
     const res = await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
-    console.log(res)
     return res.data
   } catch (err) {
     console.log(err)
@@ -33,7 +32,8 @@ export const getPopularMovies = async () => {
 
 export const getSimilarMovies = async (id) => {
   try {
-    const res = await axios.get(`${BASE_URL}/movie/${id}/similar/?api_key=${API_KEY}`)
+    const res = await axios.get(`${BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)
+    console.log(res.data)
     return res.data
   } catch (err) {
     console.log(err)

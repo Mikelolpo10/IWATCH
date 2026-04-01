@@ -383,11 +383,14 @@
 
 .similar-card {
   position: relative;
+  display: flex;
+  height: 20rem;
+  flex-direction: column;
   border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--dark-card);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .similar-card::before {
@@ -397,7 +400,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 15, 35, 0.9) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
@@ -405,7 +407,7 @@
 
 .similar-card:hover {
   transform: scale(1.05) translateY(-8px);
-  box-shadow: 0 15px 30px rgba(82, 134, 255, 0.3);
+  box-shadow: 0 15px 30px rgba(82, 134, 255, 0.1);
   z-index: 10;
 }
 
@@ -414,31 +416,18 @@
 }
 
 .similar-img {
-  width: 100%;
-  height: 240px;
-  background: var(--dark-lighter);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 70%;
+  width: 100%;
+  background: var(--dark-lighter);
   font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.1);
 }
 
 .similar-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   padding: 1rem;
-  z-index: 2;
-  transform: translateY(15px);
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.similar-card:hover .similar-info {
-  transform: translateY(0);
-  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
 }
 
 .similar-info h3 {

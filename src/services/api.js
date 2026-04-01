@@ -12,7 +12,7 @@ export const getMovie = async (id) => {
   }
 }
 
-export const getReview = async (id) => {
+export const getReviews = async (id) => {
   try {
     const res = await axios.get(`${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`)
     return res.data
@@ -51,7 +51,6 @@ export const getTrendingMovies = async () => {
 export const getSimilarMovies = async (id) => {
   try {
     const res = await axios.get(`${BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)
-    console.log(res.data)
     return res.data
   } catch (err) {
     console.log(err)

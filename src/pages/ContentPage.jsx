@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import Navbar from "../components/Navbar"
-import { getMovie, getSimilarMovies } from "../services/api"
+import { getMovie, getReviews, getSimilarMovies } from "../services/api"
 import formatRunTime from '../utils/formatRunTime.js'
 import "./ContentPage.css"
 
 export default function ContentPage() {
   const { id } = useParams()
   const [movie, setMovie] = useState()
+  const [reviews, setReviews] = useState()
   const [similarMovie, setSimilarMovies] = useState()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [movieData, similarData] = await Promise.all([
+        const [movieData, reviewsData, similarData] = await Promise.all([
           getMovie(id),
-          getSimilarMovies(id)
+          getReviews(id),
+          getSimilarMovies(id),
         ])
 
         setMovie(movieData)
+        console.log(reviewsData.results)
+        setReviews(reviewsData.results.slice(0, 3))
         setSimilarMovies(similarData.results.slice(0, 7))
       } catch (err) {
         console.log(err)
@@ -37,6 +41,9 @@ export default function ContentPage() {
 
   return (
     <>
+      <title>{movie.title}</title>
+
+
       <Navbar />
 
       <section className="film-hero">
@@ -54,7 +61,7 @@ export default function ContentPage() {
             <span className="film-age-rating">16+</span>
           </div>
 
-          <p className="film-description">
+          <p className="film-overwiew">
             In 2045, a rogue artificial intelligence threatens to plunge the world into chaos...
           </p>
 
@@ -129,37 +136,19 @@ export default function ContentPage() {
 
         <section id="reviews" className="section">
           <h2 className="section-title">REVIEWS</h2>
-
           <div className="reviews-container">
-            {[{
-              name: "Alex Thompson",
-              role: "Verified Viewer",
-              rating: "9.5",
-              text: "Masterclass in sci-fi storytelling..."
-            },
-            {
-              name: "Maria Rodriguez",
-              role: "Film Critic",
-              rating: "8.8",
-              text: "A thrilling ride..."
-            },
-            {
-              name: "David Chen",
-              role: "Top Reviewer",
-              rating: "9.0",
-              text: "Intelligent approach to AI ethics..."
-            }].map((r, i) => (
-              <div className="review-card" key={i}>
+            {reviews.map(({ id, author, author_details, content, updated_at }) => (
+              <div className="review-card" key={id}>
                 <div className="review-header">
                   <div className="reviewer-info">
-                    <div className="reviewer-name">{r.name}</div>
+                    <div className="reviewer-name">{author}</div>
                     <div style={{ color: "var(--text-dim)", fontSize: "0.75rem" }}>
-                      {r.role}
+                      {updated_at}
                     </div>
                   </div>
-                  <div className="review-rating">★ {r.rating}</div>
+                  <div className="review-rating">★ {author_details.rating || '-'}</div>
                 </div>
-                <p className="review-text">{r.text}</p>
+                <p className="review-text">{content}</p>
               </div>
             ))}
           </div>
@@ -174,7 +163,11 @@ export default function ContentPage() {
                 <img className="similar-img" src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="" />
                 <div className="similar-info">
                   <h3>{title}</h3>
-                  <span>★ {vote_average.toFixed(1)}</span>
+                  <span>
+                    ★ {vote_average > 0
+                      ? vote_average.toFixed(1)
+                      : "-"}
+                  </span>
                 </div>
               </div>
             ))}

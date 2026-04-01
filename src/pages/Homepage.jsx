@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router'
 import Navbar from '../components/Navbar.jsx'
 import ContentCard from '../components/ContentCard.jsx'
 import Footer from '../components/Footer.jsx'
@@ -75,7 +76,7 @@ export default function Homepage() {
       <section id="trending">
         <div className="section-header">
           <h2>TRENDING NOW</h2>
-          <a href="#">View All →</a>
+          <Link className='view-all' href="#">View All →</Link>
         </div>
 
         <div className="content-row">
@@ -88,7 +89,7 @@ export default function Homepage() {
       <section id="popular">
         <div className="section-header">
           <h2>POPULAR ON IWATCH</h2>
-          <a href="#">View All →</a>
+          <Link className='view-all' href="#">View All →</Link>
         </div>
 
         <div className="content-row">
@@ -132,45 +133,17 @@ export default function Homepage() {
 }
 
 
-// adult
-// :
-// false
-// backdrop_path
-// :
-// "/1x9e0qWonw634NhIsRdvnneeqvN.jpg"
-// genre_ids
-// :
-// (2) [10749, 18]
-// id
-// :
-// 1523145
-// original_language
-// :
-// "ru"
-// original_title
-// :
-// "Твоё сердце будет разбито"
-// overview
-// :
-// "High school student Polina is saved from bullying at her new school and makes a deal with the main bully Bars: he must pretend to be her boyfriend and protect her, and she must do everything he says. During this game, the couple develops real feelings, but her family and classmates have reasons to separate the lovers."
-// popularity
-// :
-// 1340.8675
-// poster_path
-// :
-// "/7wIBfBl2gejt6xHxNSK0reVIm7E.jpg"
-// release_date
-// :
-// "2026-03-26"
-// title
-// :
-// "Your Heart Will Be Broken"
-// video
-// :
-// false
-// vote_average
-// :
-// 6.7
-// vote_count
-// :
-// 19
+// adult: false
+// backdrop_path: "/1x9e0qWonw634NhIsRdvnneeqvN.jpg"
+// genre_ids: [10749, 18]
+// id: 1523145
+// original_language: "ru"
+// original_title: "Твоё сердце будет разбито"
+// overview: "High school student Polina is saved from bullying at her new school and makes a deal with the main bully Bars: he must pretend to be her boyfriend and protect her, and she must do everything he says. During this game, the couple develops real feelings, but her family and classmates have reasons to separate the lovers."
+// popularity: 1340.8675
+// poster_path: "/7wIBfBl2gejt6xHxNSK0reVIm7E.jpg"
+// release_date: "2026-03-26"
+// title: "Your Heart Will Be Broken"
+// video: false
+// vote_average: 6.7
+// vote_count: 19

@@ -13,6 +13,15 @@ export const getMovie = async (id) => {
   }
 }
 
+export const searchMovies = async (query) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const getPopularMovies = async () => {
   try {
     const res = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
@@ -22,14 +31,16 @@ export const getPopularMovies = async () => {
   }
 }
 
-export const searchMovies = async (query) => {
+export const getSimilarMovies = async (id) => {
   try {
-    const res = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
+    const res = await axios.get(`${BASE_URL}/movie/${id}/similar/?api_key=${API_KEY}`)
     return res.data
   } catch (err) {
     console.log(err)
   }
 }
+
+
 
 
 

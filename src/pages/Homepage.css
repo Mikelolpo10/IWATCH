@@ -113,8 +113,15 @@ body {
 
 .section-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
+}
+
+.view-all {
+  color: white;
+  font-size: 0.9rem;
+  text-decoration: none;
 }
 
 .content-row {

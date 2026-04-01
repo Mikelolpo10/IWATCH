@@ -1,9 +1,10 @@
 .navbar {
-  position: fixed;
-  width: 100%;
+  position: sticky;
   padding: 0.9rem 4em;
+  top: 0;
   display: flex;
   align-items: center;
+  width: 100%;
   background: rgba(10, 10, 15, 0.95);
   z-index: 1000;
 }

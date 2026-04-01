@@ -13,12 +13,12 @@ export default function ContentPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {  
+      try {
         const [movieData, similarData] = await Promise.all([
           getMovie(id),
           getSimilarMovies(id)
         ])
-  
+
         setMovie(movieData)
         setSimilarMovies(similarData.results.slice(0, 7))
       } catch (err) {
@@ -27,7 +27,7 @@ export default function ContentPage() {
         setLoading(false)
       }
     }
-  
+
     fetchData()
   }, [id])
 

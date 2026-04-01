@@ -12,6 +12,15 @@ export const getMovie = async (id) => {
   }
 }
 
+export const getReview = async (id) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`)
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const searchMovies = async (query) => {
   try {
     const res = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)

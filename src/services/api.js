@@ -30,6 +30,15 @@ export const getPopularMovies = async () => {
   }
 }
 
+export const getTrendingMovies = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/trending/all/day?api_key=${API_KEY}`)
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const getSimilarMovies = async (id) => {
   try {
     const res = await axios.get(`${BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)

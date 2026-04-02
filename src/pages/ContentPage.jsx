@@ -3,6 +3,7 @@ import { useParams } from "react-router"
 import Navbar from "../components/Navbar"
 import { getMovie, getReviews, getSimilarMovies } from "../services/api"
 import formatRunTime from '../utils/formatRunTime.js'
+import formatDate from "../utils/formatDate.js"
 import "./ContentPage.css"
 
 export default function ContentPage() {
@@ -51,7 +52,7 @@ export default function ContentPage() {
         <div id="hero-overlay"></div>
 
         <div className="film-info">
-          <div className="film-badge">New Release</div>
+          <div className="film-badge">{movie.status}</div>
           <h1 className="film-title">{movie.title}</h1>
 
           <div className="film-meta">
@@ -62,11 +63,11 @@ export default function ContentPage() {
           </div>
 
           <p className="film-overwiew">
-            In 2045, a rogue artificial intelligence threatens to plunge the world into chaos...
+            {movie.tagline}
           </p>
 
           <div className="film-actions">
-            <button className="btn btn-play">▶ Play Now</button>
+            <button className="btn btn-play">▶ Play Trailer</button>
             <button className="btn btn-list">+ My List</button>
             <button className="btn btn-share">↗ Share</button>
           </div>
@@ -78,7 +79,7 @@ export default function ContentPage() {
           {[
             ["9.2", "IMDB Rating"],
             ["94%", "Critics Score"],
-            ["2.4M", "Views"],
+            ["2.4M", "Popularity"],
             ["15+", "Awards"]
           ].map(([value, label], i) => (
             <div className="stat-card" key={i}>
@@ -115,11 +116,11 @@ export default function ContentPage() {
             <div className="detail-block">
               <h3>Movie Information</h3>
               <ul className="detail-list">
-                <li><span>Release Date</span><span>March 15, 2024</span></li>
-                <li><span>Runtime</span><span>2h 28min</span></li>
-                <li><span>Language</span><span>English</span></li>
+                <li><span>Release Date</span><span>{formatDate(movie.release_date)}</span></li>
+                <li><span>Runtime</span><span>{formatRunTime(movie.runtime)}</span></li>
+                <li><span>Language</span><span>{movie.original_language}</span></li> 
                 <li><span>Country</span><span>USA</span></li>
-                <li><span>Budget</span><span>$85M</span></li>
+                <li><span>Budget</span><span>${movie.budget.toLocaleString('en-US')}</span></li>
               </ul>
             </div>
 

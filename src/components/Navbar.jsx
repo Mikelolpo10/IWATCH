@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import './Navbar.css'
 
 export default function Navbar() {
@@ -9,11 +9,11 @@ export default function Navbar() {
       </Link>
 
       <ul className="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#series">Series</a></li>
-        <li><a href="#movies">Movies</a></li>
-        <li><a href="#new">New & Popular</a></li>
-        <li><a href="#mylist">My List</a></li>
+        <li><NavLink to={'/'}>Home</NavLink></li>
+        <li><NavLink to="#series">Series</NavLink></li>
+        <li><NavLink to="#movies">Movies</NavLink></li>
+        <li><NavLink to="#new">New & Popular</NavLink></li>
+        <li><NavLink to="#mylist">My List</NavLink></li>
       </ul>
 
       <div className="nav-actions">

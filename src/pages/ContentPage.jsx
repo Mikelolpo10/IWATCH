@@ -23,7 +23,6 @@ export default function ContentPage() {
         ])
 
         setMovie(movieData)
-        console.log(reviewsData.results)
         setReviews(reviewsData.results.slice(0, 3))
         setSimilarMovies(similarData.results.slice(0, 7))
       } catch (err) {

@@ -3,27 +3,33 @@ import { Link } from 'react-router'
 import Navbar from '../components/Navbar.jsx'
 import ContentCard from '../components/ContentCard.jsx'
 import Footer from '../components/Footer.jsx'
-import { getPopularMovies } from '../services/api.js'
+import { getPopularMovies, getTrendingMovies } from '../services/api.js'
 import './Homepage.css'
 
 export default function Homepage() {
   const [popularMovies, setPopularMovies] = useState()
+  const [trendingMovies, setTrendingMovies] = useState()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchPopularMovies = async () => {
+    const fetchAll = async () => {
       try {
-        const data = await getPopularMovies()
-        setPopularMovies(data.results)
-        console.log(data.results)
+        const [popularMovies, trendingMovies] = await Promise.all([
+          getPopularMovies(),
+          getTrendingMovies(),
+        ])
+
+        console.log(trendingMovies.results)
+        setPopularMovies(popularMovies.results)
+        setTrendingMovies(trendingMovies.results.slice(0, 8))
       } catch (err) {
-        throw new Error(`Problem with fetching popular movies ${err}`)
+        throw new Error(err)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchPopularMovies()
+    fetchAll()
   }, [])
 
   if (loading) {
@@ -80,8 +86,14 @@ export default function Homepage() {
         </div>
 
         <div className="content-row">
-          {["🎬", "🎭", "🔥", "🌙", "⚡"].map((icon, i) => (
-            <ContentCard key={i} icon={icon} />
+          {trendingMovies.map(({ id, poster_path, title, vote_average }) => (
+            <ContentCard
+              key={id}
+              id={id}
+              poster={poster_path}
+              title={title}
+              rating={vote_average.toFixed(1)}
+            />
           ))}
         </div>
       </section>

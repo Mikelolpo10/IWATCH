@@ -19,7 +19,7 @@ export default function Homepage() {
           getTrendingMovies(),
         ])
 
-        console.log(trendingMovies.results)
+        console.log(popularMovies.results)
         setPopularMovies(popularMovies.results)
         setTrendingMovies(trendingMovies.results.slice(0, 8))
       } catch (err) {
@@ -110,6 +110,7 @@ export default function Homepage() {
             <ContentCard
               key={id}
               id={id}
+              type={"movie"}
               poster={poster_path}
               title={title || name}
               rating={vote_average.toFixed(1)}

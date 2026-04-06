@@ -7,7 +7,7 @@ import formatDate from "../utils/formatDate.js"
 import "./ContentPage.css"
 
 export default function ContentPage() {
-  const { id } = useParams()
+  const { type, id } = useParams()
   const [movie, setMovie] = useState()
   const [reviews, setReviews] = useState()
   const [similarMovie, setSimilarMovies] = useState()
@@ -17,11 +17,12 @@ export default function ContentPage() {
     const fetchData = async () => {
       try {
         const [movieData, reviewsData, similarData] = await Promise.all([
-          getMovie(id),
-          getReviews(id),
-          getSimilarMovies(id),
+          getMovie(id, type),
+          getReviews(id, type),
+          getSimilarMovies(id, type),
         ])
 
+        console.log(movieData)
         setMovie(movieData)
         setReviews(reviewsData.results.slice(0, 3))
         setSimilarMovies(similarData.results.slice(0, 7))
@@ -41,7 +42,7 @@ export default function ContentPage() {
 
   return (
     <>
-      <title>{movie.title}</title>
+      <title>{movie.title ?? movie.name}</title>
 
 
       <Navbar />
@@ -56,8 +57,11 @@ export default function ContentPage() {
 
           <div className="film-meta">
             <span className="rating-large">★ {movie.vote_average.toFixed(1)}</span>
-            <span>{movie.release_date.slice(0, 4)}</span>
-            <span>{formatRunTime(movie.runtime)}</span>
+            <span>{(
+              movie.release_date?.slice(0, 4) ??
+              movie.first_air_date?.slice(0, 4)
+            )}</span>
+            <span>{formatRunTime(movie?.runtime ?? movie.episode_run_time)}</span>
             <span className="film-age-rating">16+</span>
           </div>
 
@@ -115,11 +119,17 @@ export default function ContentPage() {
             <div className="detail-block">
               <h3>Movie Information</h3>
               <ul className="detail-list">
-                <li><span>Release Date</span><span>{formatDate(movie.release_date)}</span></li>
-                <li><span>Runtime</span><span>{formatRunTime(movie.runtime)}</span></li>
-                <li><span>Language</span><span>{movie.original_language}</span></li> 
+                <li><span>Release Date</span><span>{(
+                  movie.release_date?.slice(0, 4) ??
+                  movie.first_air_date?.slice(0, 4)
+                )}</span></li>
+                <li><span>Runtime</span><span>{formatRunTime(movie?.runtime ?? movie.episode_run_time)}</span></li>
+                <li><span>Language</span><span>{movie.original_language}</span></li>
                 <li><span>Country</span><span>USA</span></li>
-                <li><span>Budget</span><span>${movie.budget.toLocaleString('en-US')}</span></li>
+                {type === movie ?
+                  <li><span>Budget</span><span>${movie.budget.toLocaleString('en-US')}</span></li> :
+                  <li><span>Episode</span><span>{movie.number_of_episodes}</span></li>
+                }
               </ul>
             </div>
 

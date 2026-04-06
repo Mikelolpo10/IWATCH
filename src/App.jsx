@@ -12,7 +12,7 @@ function App() {
           element={<Homepage />}
         />
         <Route
-          path='/movie/:id'
+          path='/details/:type/:id'
           element={<ContentPage />}
         />
       </Routes>

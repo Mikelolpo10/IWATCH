@@ -86,12 +86,13 @@ export default function Homepage() {
         </div>
 
         <div className="content-row">
-          {trendingMovies.map(({ id, poster_path, title, vote_average }) => (
+          {trendingMovies.map(({ id, media_type, poster_path, title, name, vote_average }) => (
             <ContentCard
               key={id}
               id={id}
+              type={media_type}
               poster={poster_path}
-              title={title}
+              title={title || name}
               rating={vote_average.toFixed(1)}
             />
           ))}
@@ -105,12 +106,12 @@ export default function Homepage() {
         </div>
 
         <div className="content-row">
-          {popularMovies.map(({ id, poster_path, title, vote_average }) => (
+          {popularMovies.map(({ id, poster_path, title, name, vote_average }) => (
             <ContentCard
               key={id}
               id={id}
               poster={poster_path}
-              title={title}
+              title={title || name}
               rating={vote_average.toFixed(1)}
             />
           ))}

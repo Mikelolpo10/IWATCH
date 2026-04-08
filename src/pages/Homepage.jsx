@@ -42,15 +42,15 @@ export default function Homepage() {
 
       <Navbar />
 
-      <section id="hero" className='h-f'>
-        <div className="hero-bg"></div>
+      <section id="hero" className='h-screen flex items-center px-16 relative'>
+        <div className="absolute h-full w-full bg-linear-45 from-[#0F0F23] to-[#1A0F2E] -z-1"></div>
 
-        <div className="hero-content">
-          <div className="hero-badge">NEW ORIGINAL SERIES</div>
-          <h1>
+        <div className="max-w-xl">
+          <div className="bg-[rgb(124,58,237)]/20 text-[rgb(82,134,255)] text-md py-2 px-4 rounded-2xl mb-4 inline-block">NEW ORIGINAL SERIES</div>
+          <h1 className='mb-4 text-6xl'>
             ENDLESS <br /> ENTERTAINMENT
           </h1>
-          <p>
+          <p className='mb-8'>
             Stream thousands of shows and movies, with new releases added every
             week. Your next obsession is waiting.
           </p>

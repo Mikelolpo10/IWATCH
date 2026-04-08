@@ -42,7 +42,7 @@ export default function Homepage() {
 
       <Navbar />
 
-      <section id="hero">
+      <section id="hero" className='h-f'>
         <div className="hero-bg"></div>
 
         <div className="hero-content">

@@ -3,7 +3,6 @@ import { useParams } from "react-router"
 import Navbar from "../components/Navbar"
 import { getMovie, getReviews, getSimilarMovies } from "../services/api"
 import formatRunTime from '../utils/formatRunTime.js'
-import formatDate from "../utils/formatDate.js"
 import "./ContentPage.css"
 
 export default function ContentPage() {
@@ -53,7 +52,7 @@ export default function ContentPage() {
 
         <div className="film-info">
           <div className="film-badge">{movie.status}</div>
-          <h1 className="film-title">{movie.title}</h1>
+          <h1 className="film-title">{movie?.title ?? movie.name}</h1>
 
           <div className="film-meta">
             <span className="rating-large">★ {movie.vote_average.toFixed(1)}</span>
@@ -125,7 +124,6 @@ export default function ContentPage() {
                 )}</span></li>
                 <li><span>Runtime</span><span>{formatRunTime(movie?.runtime ?? movie.episode_run_time)}</span></li>
                 <li><span>Language</span><span>{movie.original_language}</span></li>
-                <li><span>Country</span><span>USA</span></li>
                 {type === movie ?
                   <li><span>Budget</span><span>${movie.budget.toLocaleString('en-US')}</span></li> :
                   <li><span>Episode</span><span>{movie.number_of_episodes}</span></li>

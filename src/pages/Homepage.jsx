@@ -98,7 +98,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      <section className="p-6">
+      <section className="p-6 relative">
         <div className="section-header">
           <h2>POPULAR ON IWATCH</h2>
           <Link className='view-all' href="#">View All →</Link>

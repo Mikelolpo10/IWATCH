@@ -1,4 +1,4 @@
-.content-card {
+/* .content-card {
   width: 150px;
   border-radius: 10px;
   background: var(--dark-card);
@@ -9,29 +9,29 @@
 
 .content-card:hover {
   transform: scale(1.05);
-}
+} */
 
-.card-img {
+/* .card-img {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 225px;
   background: var(--dark-lighter);
   font-size: 2rem;
-}
+} */
 
-.card-img img {
+/* .card-img img {
   height: 100%;
   width: 100%;
   object-fit: contain;
   object-position: center;
-}
+} */
 
-.card-info {
+/* .card-info {
   padding: 1rem;
   color: white;
   font-size: 0.8rem;
-}
+} */
 
 .card-meta {
   display: flex;

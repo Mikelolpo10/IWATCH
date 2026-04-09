@@ -20,8 +20,8 @@ export default function Homepage() {
         ])
 
         console.log(trendingMovies.results)
-        setTrendingMovies(trendingMovies.results.slice(0, 8))
-        setPopularMovies(popularMovies.results)
+        setTrendingMovies(trendingMovies.results.slice(0, 10))
+        setPopularMovies(popularMovies.results.slice(0, 10))
       } catch (err) {
         throw new Error(err)
       } finally {
@@ -42,7 +42,7 @@ export default function Homepage() {
 
       <Navbar />
 
-      <section id="hero" className='p-0 relative h-[40vh] flex flex-col'>
+      <section id="hero" className='mb-6 p-0 relative h-[40vh] flex flex-col'>
         <div className="absolute h-full w-full bg-linear-45 from-dark to-[#1A0F2E] -z-1"></div>
 
         <div className="w-full">
@@ -78,10 +78,10 @@ export default function Homepage() {
         </div>
       </section>
 
-      <section className="p-16">
+      <section className="p-6">
         <div className="section-header">
           <h2>TRENDING NOW</h2>
-          <Link className="text-white" href="#">View All →</Link>
+          <Link className="text-white text-[0.9rem]" href="#">View All →</Link>
         </div>
 
         <div className="content-row">
@@ -98,7 +98,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      <section className="p-16">
+      <section className="p-6">
         <div className="section-header">
           <h2>POPULAR ON IWATCH</h2>
           <Link className='view-all' href="#">View All →</Link>

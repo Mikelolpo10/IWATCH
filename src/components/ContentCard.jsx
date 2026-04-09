@@ -6,7 +6,7 @@ export default function ContentCard({ id, type, poster, title, rating, }) {
 
   return (
     <div
-      className="flex origin-center flex-col w-40 rounded-lg bg-dark-card transition-[scale] cursor-pointer select-none overflow-hidden hover:rounded-lg hover:scale-105"
+      className="flex origin-center flex-col min-w-40 rounded-lg bg-dark-card transition-[scale] cursor-pointer select-none overflow-hidden hover:rounded-lg hover:scale-105"
       onClick={() => navigate(`/details/${type}/${id}`)}
     >
       <div className="flex items-center justify-center w-full rounded-t-lg">

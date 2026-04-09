@@ -1,3 +1,4 @@
+import useEmblaCarousel from 'embla-carousel-react'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import Navbar from '../components/Navbar.jsx'
@@ -10,6 +11,16 @@ export default function Homepage() {
   const [popularMovies, setPopularMovies] = useState()
   const [trendingMovies, setTrendingMovies] = useState()
   const [loading, setLoading] = useState(true)
+  const [trendingRef] = useEmblaCarousel({
+    loop: false,
+    dragFree: true,
+    align: 'start',
+  })
+  const [popularRef] = useEmblaCarousel({
+    loop: false,
+    dragFree: true,
+    align: 'start',
+  })
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -80,41 +91,45 @@ export default function Homepage() {
 
       <section className="p-6">
         <div className="section-header">
-          <h2>TRENDING NOW</h2>
+          <h2 className="font-semibold">TRENDING NOW</h2>
           <Link className="text-white text-[0.9rem]" href="#">View All →</Link>
         </div>
 
-        <div className="content-row">
-          {trendingMovies.map(({ id, media_type, poster_path, title, name, vote_average }) => (
-            <ContentCard
-              key={id}
-              id={id}
-              type={media_type}
-              poster={poster_path}
-              title={title || name}
-              rating={vote_average.toFixed(1)}
-            />
-          ))}
+        <div className="overflow-hidden" ref={trendingRef}>
+          <div className="content-row">
+            {trendingMovies.map(({ id, media_type, poster_path, title, name, vote_average }) => (
+              <ContentCard
+                key={id}
+                id={id}
+                type={media_type}
+                poster={poster_path}
+                title={title || name}
+                rating={vote_average.toFixed(1)}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="p-6 relative">
         <div className="section-header">
-          <h2>POPULAR ON IWATCH</h2>
+          <h2 className="font-semibold">POPULAR ON IWATCH</h2>
           <Link className='view-all' href="#">View All →</Link>
         </div>
 
-        <div className="content-row">
-          {popularMovies.map(({ id, poster_path, title, name, vote_average }) => (
-            <ContentCard
-              key={id}
-              id={id}
-              type={"movie"}
-              poster={poster_path}
-              title={title || name}
-              rating={vote_average.toFixed(1)}
-            />
-          ))}
+        <div className="overflow-hidden" ref={popularRef}>
+          <div className="content-row">
+            {popularMovies.map(({ id, poster_path, title, name, vote_average }) => (
+              <ContentCard
+                key={id}
+                id={id}
+                type={"movie"}
+                poster={poster_path}
+                title={title || name}
+                rating={vote_average.toFixed(1)}
+              />
+            ))}
+          </div>
         </div>
       </section>
 

@@ -1,2 +1,36 @@
-@import "tailwindcss"
+@import "tailwindcss";
+@import "tailwindcss/preflight"
 
+@tailwind utilities;
+
+@theme {
+  --color-primary: rgb(82, 134, 255);
+  --color-secondary: #14B8A6;
+  --color-dark: #0F0F23;
+  --color-dark-card: #1A1A35;
+  --color-dark-lighter: #252547;
+  --color-text: #FFFFFF;
+  --color-text-dim: #A1A1B5;
+}
+
+@layer components {
+  .btn-hero {
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}

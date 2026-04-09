@@ -19,9 +19,9 @@ export default function Homepage() {
           getTrendingMovies(),
         ])
 
-        console.log(popularMovies.results)
-        setPopularMovies(popularMovies.results)
+        console.log(trendingMovies.results)
         setTrendingMovies(trendingMovies.results.slice(0, 8))
+        setPopularMovies(popularMovies.results)
       } catch (err) {
         throw new Error(err)
       } finally {
@@ -42,36 +42,35 @@ export default function Homepage() {
 
       <Navbar />
 
-      <section id="hero" className='h-screen flex items-center px-16 relative'>
-        <div className="absolute h-full w-full bg-linear-45 from-[#0F0F23] to-[#1A0F2E] -z-1"></div>
+      <section id="hero" className='h-screen flex flex-col justify-center px-16 relative'>
+        <div className="absolute h-full w-full bg-linear-45 from-dark to-[#1A0F2E] -z-1"></div>
 
         <div className="max-w-xl">
-          <div className="bg-[rgb(124,58,237)]/20 text-[rgb(82,134,255)] text-md py-2 px-4 rounded-2xl mb-4 inline-block">NEW ORIGINAL SERIES</div>
-          <h1 className='mb-4 text-6xl'>
+          <div className="bg-[rgb(124,58,237)]/20 text-primary text-md py-1 px-4 rounded-3xl mb-4 inline-block">NEW ORIGINAL SERIES</div>
+          <h1 className='mb-4 text-6xl font-bold'>
             ENDLESS <br /> ENTERTAINMENT
           </h1>
-          <p className='mb-8'>
+          <p className='mb-8 text-text-dim'>
             Stream thousands of shows and movies, with new releases added every
             week. Your next obsession is waiting.
           </p>
-
-          <div className="hero-cta">
-            <button className="btn-hero btn-watch" onClick={() => getPopularMovies()}>▶ Watch Now</button>
-            <button className="btn-hero btn-info">More Info</button>
+          <div className="flex gap-4">
+            <button className="btn-hero bg-primary text-white">▶ Watch Now</button>
+            <button className="btn-hero bg-white/10 text-white">More Info</button>
           </div>
         </div>
 
-        <div className="hero-preview">
-          <div className="preview-card">
-            <div className="preview-img"></div>
+        <div className="w-75">
+          <div className="bg-dark-card p-4 rounded-2xl">
+            <div className="h-45 bg-dark-lighter"></div>
             <div className="preview-info">
               <h3>Shadow Protocol</h3>
-              <div className="preview-meta">
-                <span className="rating">★ 9.2</span>
+              <div className="flex items-center gap-4 text-[0.8rem] text-text-dim">
+                <span className="text-secondary">★ 9.2</span>
                 <span>2024</span>
                 <span>Sci-Fi Thriller</span>
               </div>
-              <p className="preview-desc">
+              <p className="text-text-dim">
                 A rogue AI threatens humanity's existence. Only one team can stop it.
               </p>
             </div>
@@ -79,10 +78,10 @@ export default function Homepage() {
         </div>
       </section>
 
-      <section id="trending">
+      <section className="p-16">
         <div className="section-header">
           <h2>TRENDING NOW</h2>
-          <Link className='view-all' href="#">View All →</Link>
+          <Link className="text-white" href="#">View All →</Link>
         </div>
 
         <div className="content-row">
@@ -99,7 +98,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      <section id="popular">
+      <section className="p-16">
         <div className="section-header">
           <h2>POPULAR ON IWATCH</h2>
           <Link className='view-all' href="#">View All →</Link>
@@ -120,22 +119,22 @@ export default function Homepage() {
       </section>
 
       {/* Categories */}
-      <section id="categories">
+      <section className="py-12 px-16">
         <div className="section-header">
           <h2>BROWSE BY GENRE</h2>
         </div>
 
-        <div className="category-grid">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6">
           {[
             { icon: "🎬", title: "ACTION" },
             { icon: "🎭", title: "DRAMA" },
             { icon: "😂", title: "COMEDY" },
             { icon: "👻", title: "HORROR" }
           ].map((cat, i) => (
-            <div className="category-card" key={i}>
-              <div className="category-icon">{cat.icon}</div>
-              <h3>{cat.title}</h3>
-              <p>Sample description</p>
+            <div className="bg-dark-card p-2 rounded-2xl text-center hover:-translate-y-1 transition" key={i}>
+              <div className="my-4 text-[2rem]">{cat.icon}</div>
+              <h3 className="font-bold text-[1.2rem]">{cat.title}</h3>
+              <p className="mb-4">Sample description</p>
             </div>
           ))}
         </div>

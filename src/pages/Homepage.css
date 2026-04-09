@@ -39,24 +39,24 @@ body {
   margin-bottom: 1rem;
 } */
 
-#hero p {
+/* #hero p {
   color: var(--text-dim);
   margin-bottom: 2rem;
-}
+} */
 
-.hero-cta {
+/* .hero-cta {
   display: flex;
   gap: 1rem;
-}
+} */
 
-.btn-hero {
+/* .btn-hero {
   padding: 0.8rem 2rem;
   border-radius: 6px;
   border: none;
   cursor: pointer;
-}
+} */
 
-.btn-watch {
+/* .btn-watch {
   background: var(--primary);
   color: white;
 }
@@ -64,22 +64,22 @@ body {
 .btn-info {
   background: rgba(255, 255, 255, 0.1);
   color: white;
-}
+} */
 
 /* HERO PREVIEW */
-.hero-preview {
+/* .hero-preview {
   position: absolute;
   right: 5%;
   top: 50%;
   transform: translateY(-50%);
   width: 300px;
-}
+} */
 
-.preview-card {
+/* .preview-card {
   background: var(--dark-card);
   padding: 1rem;
   border-radius: 10px;
-}
+} */
 
 .preview-img {
   height: 180px;
@@ -88,19 +88,19 @@ body {
   margin-bottom: 1rem;
 }
 
-.preview-meta {
+/* .preview-meta {
   display: flex;
   gap: 1rem;
   font-size: 0.8rem;
   color: var(--text-dim);
-}
+} */
 
-.rating {
+/* .rating {
   color: var(--secondary);
-}
+} */
 
 /* CONTENT */
-#trending,
+/* #trending,
 #popular {
   padding: 4rem;
 }
@@ -110,47 +110,47 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
-}
+} */
 
-.view-all {
+/* .view-all {
   color: white;
   font-size: 0.9rem;
   text-decoration: none;
-}
+} */
 
-.content-row {
+/* .content-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
-}
+} */
 
 /* CATEGORIES */
-#categories {
+/* #categories {
   padding: 3rem 4rem;
-}
+} */
 
-.category-grid {
+/* .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-}
+} */
 
-.category-card {
+/* .category-card {
   background: var(--dark-card);
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
   transition: 0.3s;
-}
+} */
 
-.category-card:hover {
+/* .category-card:hover {
   transform: translateY(-5px);
-}
+} */
 
-.category-icon {
+/* .category-icon {
   font-size: 2rem;
   margin-bottom: 1rem;
-}
+} */
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

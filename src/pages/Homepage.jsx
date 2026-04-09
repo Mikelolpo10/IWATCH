@@ -42,11 +42,28 @@ export default function Homepage() {
 
       <Navbar />
 
-      <section id="hero" className='h-screen flex flex-col justify-center px-16 relative'>
+      <section id="hero" className='p-0 relative h-[40vh] flex flex-col'>
         <div className="absolute h-full w-full bg-linear-45 from-dark to-[#1A0F2E] -z-1"></div>
 
-        <div className="max-w-xl">
-          <div className="bg-[rgb(124,58,237)]/20 text-primary text-md py-1 px-4 rounded-3xl mb-4 inline-block">NEW ORIGINAL SERIES</div>
+        <div className="w-full">
+          <div className="bg-dark-card p-4 md:rounded-2xl">
+            <div className="h-45 bg-dark-lighter"></div>
+            <div className="preview-info">
+              <h3 className="text-2xl font-bold pt-2">Shadow Protocol</h3>
+              <div className="flex items-center gap-4 text-[0.8rem] text-text-dim">
+                <span className="text-secondary">★ 9.2</span>
+                <span>2024</span>
+                <span>Sci-Fi Thriller</span>
+              </div>
+              <p className="text-text-dim">
+                A rogue AI threatens humanity's existence. Only one team can stop it.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full hidden md:block">
+          <div className="bg-[rgb(124,58,237)]/20 text-primary text-md py-1 px-4 md:rounded-3xl mb-4 inline-block">NEW ORIGINAL SERIES</div>
           <h1 className='mb-4 text-6xl font-bold'>
             ENDLESS <br /> ENTERTAINMENT
           </h1>
@@ -57,23 +74,6 @@ export default function Homepage() {
           <div className="flex gap-4">
             <button className="btn-hero bg-primary text-white">▶ Watch Now</button>
             <button className="btn-hero bg-white/10 text-white">More Info</button>
-          </div>
-        </div>
-
-        <div className="w-75">
-          <div className="bg-dark-card p-4 rounded-2xl">
-            <div className="h-45 bg-dark-lighter"></div>
-            <div className="preview-info">
-              <h3>Shadow Protocol</h3>
-              <div className="flex items-center gap-4 text-[0.8rem] text-text-dim">
-                <span className="text-secondary">★ 9.2</span>
-                <span>2024</span>
-                <span>Sci-Fi Thriller</span>
-              </div>
-              <p className="text-text-dim">
-                A rogue AI threatens humanity's existence. Only one team can stop it.
-              </p>
-            </div>
           </div>
         </div>
       </section>
